@@ -7,6 +7,8 @@ import numpy as np
 import os
 from streamlit.components.v1 import components
 from tensorflow.keras.utils import custom_object_scope
+import keras.utils as keras_utils
+import tensorflow_hub as hub
 
 
 
@@ -44,10 +46,8 @@ st.title("Plants Disease Detection")
 
 image = st.file_uploader("Upload Image", type=["jpg", "jpeg", "png"])
 
-custom_objects = {'KerasLayer': tf.keras.layers.experimental.preprocessing.KerasLayer}
-
-with custom_object_scope(custom_objects):
-    model = tf.keras.models.load_model("efficiennet_model_aug.h5")
+with keras_utils.custom_object_scope({'KerasLayer': hub.KerasLayer}):
+    model = keras.models.load_model("efficiennet_model_aug.h5")
 
 # model = keras.models.load_model("efficiennet_model_aug.h5")
 
