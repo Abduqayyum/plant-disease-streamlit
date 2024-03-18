@@ -42,7 +42,7 @@ st.title("Plants Disease Detection")
 
 image = st.file_uploader("Upload Image", type=["jpg", "jpeg", "png"])
 
-model = new_model = keras.models.load_model("efficiennet_model_aug.h5")
+model = keras.models.load_model("efficiennet_model_aug.h5")
 
 if image is not None:
     image = Image.open(image)
