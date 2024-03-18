@@ -2,4 +2,4 @@ tensorflow==2.13.0
 Pillow==9.5.0
 streamlit
 numpy==1.24.3
-tensorflow_hub
+tensorflow-hub
