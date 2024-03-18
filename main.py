@@ -6,6 +6,8 @@ from PIL import Image
 import numpy as np
 import os
 from streamlit.components.v1 import components
+from tensorflow.keras.utils import custom_object_scope
+
 
 
 class_names = ['Apple_Apple_scab', 'Apple_Black_rot', 'Apple_healthy',
@@ -42,7 +44,12 @@ st.title("Plants Disease Detection")
 
 image = st.file_uploader("Upload Image", type=["jpg", "jpeg", "png"])
 
-model = keras.models.load_model("efficiennet_model_aug.h5")
+custom_objects = {'KerasLayer': tf.keras.layers.experimental.preprocessing.KerasLayer}
+
+with custom_object_scope(custom_objects):
+    model = tf.keras.models.load_model("efficiennet_model_aug.h5")
+
+# model = keras.models.load_model("efficiennet_model_aug.h5")
 
 if image is not None:
     image = Image.open(image)
