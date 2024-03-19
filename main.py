@@ -47,7 +47,7 @@ st.title("Plants Disease Detection")
 image = st.file_uploader("Upload Image", type=["jpg", "jpeg", "png"])
 
 with keras_utils.custom_object_scope({'KerasLayer': hub.KerasLayer}):
-    model = keras.models.load_model("efficiennet_model_aug")
+    model = keras.models.load_model("efficiennet_model_aug.h5")
 
 # model = keras.models.load_model("efficiennet_model_aug.h5")
 
